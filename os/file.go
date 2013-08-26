@@ -7,7 +7,7 @@ import (
 func OpenFile(name string, flag int, perm FileMode) (file *os.File, err error) {
 	err = os.MkdirAll(filepath.Dir(name), perm)
 
-	file, err = os.OpenFile(dstFullName, flag, perm)
+	file, err = os.OpenFile(name, flag, perm)
 
 	return file, err
 }
