@@ -1,7 +1,7 @@
 package zip
 
 import (
-	"ar"
+	"archive/zip"
 )
 
 func Unzip(file string) (err error) {
