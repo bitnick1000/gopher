@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"io"
 	"os"
+	"path/filepath"
 )
 
 func Unzip(file string) (err error) {
@@ -17,7 +18,7 @@ func Unzip(file string) (err error) {
 
 	for _, file := range reader.File {
 		if file.FileInfo().IsDir() {
-			os.Mkdir(baseDir+file.Name, 0666)
+			os.Mkdir(filepath.Join(baseDir, file.Name), 0666)
 			continue
 		}
 
@@ -27,7 +28,7 @@ func Unzip(file string) (err error) {
 		}
 		defer fileReader.Close()
 
-		dstFile, err := os.OpenFile(baseDir+file.Name, os.O_WRONLY|os.O_CREATE, 0666)
+		dstFile, err := os.OpenFile(filepath.Join(baseDir, file.Name), os.O_WRONLY|os.O_CREATE, 0666)
 		if err != nil {
 			return err
 		}
