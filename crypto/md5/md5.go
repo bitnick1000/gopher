@@ -4,7 +4,7 @@ import (
 	"crypto/md5"
 )
 
-func Iteraion(message []byte, times int) []byte {
+func IteraionSum(message []byte, times int) []byte {
 	hash := md5.New()
 	hash.Write(message)
 	ret := hash.Sum(nil)
