@@ -2,6 +2,7 @@ package aes
 
 import (
 	"crypto/aes"
+	"crypto/cipher"
 )
 
 func CFBEncrypt(dst, src, key, iv []byte) error {
